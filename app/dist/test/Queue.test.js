@@ -10,6 +10,8 @@ testDequeue_FilaCheia();
 testClear();
 testPeek_FilaVazia();
 testPeek_FilaCheia();
+testToStrin_FilaVazia();
+testToStrin_FilaCheia();
 /*
   *
   * Propósito: Adicionar um novo elemento a Fila
@@ -155,6 +157,37 @@ function testPeek_FilaCheia() {
     queue.enqueue(20);
     queue.enqueue(30);
     queue.peek() === 10 ?
+        console.log(`\t${chalk.green('Test Result: Passed')}`) :
+        console.log(`\t${chalk.red('Test Resuld: Failed')}`);
+}
+/*
+  *
+  * Propósito: A função to string devolve a fila transformada
+  *   em uma string
+  *
+  * Descrição: Como ela pode retornar dois possíves resultados
+  *   undefined caso a fila esteja vazia ou uma string caso a
+  *   fila esteja preenchida vamos suar duas funções para testa-la.
+  *   Na primeira uma fila vazia será criada, retornando assim undefined,
+  *   já na segunda uma fila numérica será criada e então adicionaremos
+  *   os seguintes elementos 10, 20 e 30, respectivemente, seguindo
+  *   chamaremos a função toString que deverá retornar "10, 20, 30"
+  *
+*/
+function testToStrin_FilaVazia() {
+    const queue = new Queue();
+    console.log(desc(`Testando a função toString, com a fila vazia`));
+    queue.toString() === undefined ?
+        console.log(`\t${chalk.green('Test Result: Passed')}`) :
+        console.log(`\t${chalk.red('Test Resuld: Failed')}`);
+}
+function testToStrin_FilaCheia() {
+    const queue = new Queue();
+    console.log(desc(`Testando a função toString, com a fila preenchida`));
+    queue.enqueue(10);
+    queue.enqueue(20);
+    queue.enqueue(30);
+    queue.toString() === "10, 20, 30" ?
         console.log(`\t${chalk.green('Test Result: Passed')}`) :
         console.log(`\t${chalk.red('Test Resuld: Failed')}`);
 }

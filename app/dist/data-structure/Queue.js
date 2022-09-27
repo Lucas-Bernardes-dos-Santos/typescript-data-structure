@@ -33,4 +33,13 @@ export default class Queue {
             return undefined;
         return this.item[this.first];
     }
+    toString() {
+        if (this.isEmpty())
+            return undefined;
+        let objString = `${this.item[this.first]}`;
+        for (let i = this.first + 1; i < this.count; i++) {
+            objString = `${objString}, ${this.item[i]}`;
+        }
+        return objString;
+    }
 }
