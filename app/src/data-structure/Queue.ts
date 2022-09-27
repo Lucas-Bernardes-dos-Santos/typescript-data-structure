@@ -39,4 +39,10 @@ export default class Queue<T> {
       this.dequeue()
     }
   }
+
+  peek(): T | undefined {
+    if(this.isEmpty())
+      return undefined
+    return this.item[this.first]
+  }
 }

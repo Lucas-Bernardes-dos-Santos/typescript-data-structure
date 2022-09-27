@@ -10,6 +10,8 @@ testIsEmpty_FilaCheia()
 testDequeue_FilaVazia()
 testDequeue_FilaCheia()
 testClear()
+testPeek_FilaVazia()
+testPeek_FilaCheia()
 
 /*
   *
@@ -154,4 +156,41 @@ function testClear(): void {
   queue.isEmpty() === true ? 
     console.log(`\t${chalk.green('Test Result: Passed')}`) : 
     console.log(`\t${chalk.red('Test Resuld: Failed')}`)
+}
+
+/*
+  *
+  * Propósito: A função peek retorna o primero elemento da fila
+  * 
+  * Descrição: Como é possível retornar dois valor duas funções
+  *   serão criada. Na primeira função, uma lista vazia será 
+  *   criada e quando chamarmos o método peek ele deverá retornar 
+  *   undefined Após criada, a segunda função, uma fila numérica
+  *   adicionaremos 3 elementos a ela, 10, 20 e 30 respectivamente,
+  *   utilizaremos então o método peek que deverá retornar o
+  *   elemento de número 10.
+  *   
+*/
+function testPeek_FilaVazia(): void {
+  const queue = new Queue<number>()
+
+  console.log(desc(`Testando a função peek, com a fila vazia`))
+
+  queue.peek() === undefined ? 
+    console.log(`\t${chalk.green('Test Result: Passed')}`) : 
+    console.log(`\t${chalk.red('Test Resuld: Failed')}`)
+}
+
+function testPeek_FilaCheia(): void {
+  const queue = new Queue<number>()
+
+  console.log(desc(`Testando a função peek, com a fila preenchida com 3 elementos`))
+
+  queue.enqueue(10)
+  queue.enqueue(20)
+  queue.enqueue(30)
+
+  queue.peek() === 10 ?
+    console.log(`\t${chalk.green('Test Result: Passed')}`) : 
+    console.log(`\t${chalk.red('Test Resuld: Failed')}`)  
 }

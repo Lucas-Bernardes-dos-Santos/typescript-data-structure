@@ -28,4 +28,9 @@ export default class Queue {
             this.dequeue();
         }
     }
+    peek() {
+        if (this.isEmpty())
+            return undefined;
+        return this.item[this.first];
+    }
 }
