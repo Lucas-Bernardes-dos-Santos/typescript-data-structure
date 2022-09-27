@@ -23,4 +23,9 @@ export default class Queue {
     isEmpty() {
         return this.size() === 0;
     }
+    clear() {
+        while (!this.isEmpty()) {
+            this.dequeue();
+        }
+    }
 }

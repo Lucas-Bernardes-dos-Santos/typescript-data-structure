@@ -9,6 +9,7 @@ testIsEmpty_FilaVazia()
 testIsEmpty_FilaCheia()
 testDequeue_FilaVazia()
 testDequeue_FilaCheia()
+testClear()
 
 /*
   *
@@ -68,7 +69,7 @@ function testSize(): void {
 function testIsEmpty_FilaVazia(): void {
   const queue = new Queue<number>()
 
-  console.log(desc(`Testand a função isEmpty, com a fila vazia`))
+  console.log(desc(`Testando a função isEmpty, com a fila vazia`))
 
   queue.isEmpty() === true ? 
     console.log(`\t${chalk.green('Test Result: Passed')}`) : 
@@ -78,7 +79,7 @@ function testIsEmpty_FilaVazia(): void {
 function testIsEmpty_FilaCheia(): void {
   const queue = new Queue<number>()
 
-  console.log(desc(`Testand a função isEmpty, com a fila preenchida com dois elementos`))
+  console.log(desc(`Testando a função isEmpty, com a fila preenchida com dois elementos`))
 
   queue.enqueue(10)
   queue.enqueue(20)
@@ -107,7 +108,7 @@ function testIsEmpty_FilaCheia(): void {
 function testDequeue_FilaVazia(): void {
   const queue = new Queue<number>()
 
-  console.log(desc(`Testand a função dequeue, com a fila vazia`))
+  console.log(desc(`Testando a função dequeue, com a fila vazia`))
 
   queue.dequeue() === undefined ? 
     console.log(`\t${chalk.green('Test Result: Passed')}`) : 
@@ -117,13 +118,40 @@ function testDequeue_FilaVazia(): void {
 function testDequeue_FilaCheia(): void {
   const queue = new Queue<number>()
 
-  console.log(desc(`Testand a função dequeue, com a fila preenchida por 3 elementos`))
+  console.log(desc(`Testando a função dequeue, com a fila preenchida por 3 elementos`))
 
   queue.enqueue(1)
   queue.enqueue(2)
   queue.enqueue(3)
 
   queue.dequeue() === 1 && queue.size() === 2 ?
+    console.log(`\t${chalk.green('Test Result: Passed')}`) : 
+    console.log(`\t${chalk.red('Test Resuld: Failed')}`)
+}
+
+/*
+  *
+  * Propósito: A função clear(), como seu nome diz, limpa a lista
+  *   eliminando todos os seus elementos
+  * 
+  * Descrição: Uma fila numérica será criada, após isso serão 
+  *   adicionados 3 elementos dentro da fila seguido do uso da 
+  *   função clear, para confirmar que a fila foi limpa o método
+  *   isEmpty será chamado e deverá retornar true
+  * 
+*/
+function testClear(): void {
+  const queue = new Queue<number>()
+
+  console.log(desc(`Testando a função clear`))
+
+  queue.enqueue(1)
+  queue.enqueue(2)
+  queue.enqueue(3)
+
+  queue.clear()
+
+  queue.isEmpty() === true ? 
     console.log(`\t${chalk.green('Test Result: Passed')}`) : 
     console.log(`\t${chalk.red('Test Resuld: Failed')}`)
 }

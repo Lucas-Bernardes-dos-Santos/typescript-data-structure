@@ -33,4 +33,10 @@ export default class Queue<T> {
   isEmpty(): boolean {
     return this.size() === 0
   }
+
+  clear(): void {
+    while(!this.isEmpty()) {
+      this.dequeue()
+    }
+  }
 }
