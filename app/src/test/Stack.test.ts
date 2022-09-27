@@ -21,9 +21,9 @@ testPush()
   * 
 */
 function testPush(): void {
-  const stack = new Stack<number>()
   console.log(`\n${desc('stack.push()')}`)
-
+  
+  const stack = new Stack<number>()
   stack.push(4)
 
   stack.size() === 1 ? 

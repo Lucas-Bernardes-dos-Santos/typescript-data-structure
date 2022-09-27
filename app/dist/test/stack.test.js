@@ -17,8 +17,8 @@ testPush();
   *
 */
 function testPush() {
-    const stack = new Stack();
     console.log(`\n${desc('stack.push()')}`);
+    const stack = new Stack();
     stack.push(4);
     stack.size() === 1 ?
         console.log(`\t${chalk.green('Test Result: Passed')}`) :
