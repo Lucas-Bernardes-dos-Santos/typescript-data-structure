@@ -2,13 +2,12 @@ import chalk from "chalk";
 import Stack from "../data-structure/Stack.js";
 const desc = chalk.rgb(235, 179, 16);
 testPush();
-// testSize()
+testSize();
 // testIsEmpty()
 // testPop()
 // testPeek()
 /* Descrição da função testPush()
   *
-  * Função: push()
   * Propósito: Está função adiciona um elemento no topo da Pilha
   * Descrição: Primeiro será criada uma pilha numérica vazia, após isso adicionaremos
   * um elemento a ela (4), para confirmarmos que o elemento foi adicionar chamaremos
@@ -24,14 +23,19 @@ function testPush() {
         console.log(`\t${chalk.green('Test Result: Passed')}`) :
         console.log(`\t${chalk.red('Test Resuld: Failed')}`);
 }
+/* Descrição da função testSize()
+  *
+  * Propósito: Está função retorna a quantidade de elemento em uma pilha
+  * Descrição: Primeiro será criada uma pilha numérica vazia, após isso
+  * dois elemento serão adicionados a ela, então faremos o teste, para isso
+  * a função size() deverá retornar o valor 2
+*/
 function testSize() {
     const stack = new Stack();
-    console.log(`${chalk.rgb(235, 179, 16)('Testing the function size: It returns the size of the Stack')}`);
-    console.log(`\tCurrent Stack size - ${stack.size()}`);
+    console.log(`${desc('Testing the function size: It returns the size of the Stack')}`);
     stack.push(4);
-    console.log(`\tElement added to stack`);
-    console.log(`\tCurrent Stack size, expected (1) - ${stack.size()}`);
-    stack.size() === 1 ? console.log(`\t${chalk.green('Test Result: Passed')}`) : console.log(`\t${chalk.red('Test Resuld: Failed')}`);
+    stack.push(5);
+    stack.size() === 2 ? console.log(`\t${chalk.green('Test Result: Passed')}`) : console.log(`\t${chalk.red('Test Resuld: Failed')}`);
 }
 function testIsEmpty() {
     const stack = new Stack();
