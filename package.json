@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test-stack": "node app/dist/test/Stack.test.js"
+    "test-stack": "node app/dist/test/Stack.test.js",
+    "test-queue": "node app/dist/test/Queue.test.js"
   },
   "keywords": [],
   "author": "",
