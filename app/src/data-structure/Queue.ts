@@ -17,4 +17,20 @@ export default class Queue<T> {
   size(): number {
     return this.count - this.first
   }
+
+  dequeue(): T | undefined{
+    if(this.isEmpty()) {
+      return undefined
+    }
+
+    const result = this.item[this.first]
+    delete this.item[this.first]
+    this.first++
+
+    return result
+  }
+
+  isEmpty(): boolean {
+    return this.size() === 0
+  }
 }
