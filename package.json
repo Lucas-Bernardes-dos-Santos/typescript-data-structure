@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test-stack": "node app/dist/test/Stack.test.js",
-    "test-queue": "node app/dist/test/Queue.test.js"
+    "test-queue": "node app/dist/test/Queue.test.js",
+    "test-deque": "node app/dist/test/Deque.test.js"
   },
   "keywords": [],
   "author": "",
