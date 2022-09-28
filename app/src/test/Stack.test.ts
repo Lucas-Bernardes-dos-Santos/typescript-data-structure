@@ -6,7 +6,8 @@ const desc = chalk.rgb(235,179,16)
 
 testPush()
 testSize()
-// testIsEmpty()
+testIsEmpty_StackVazia()
+testIsEmpty_StackCheia()
 // testPop()
 // testPeek()
 
@@ -45,18 +46,44 @@ function testSize(): void {
   stack.push(4)
   stack.push(5)
   
-  stack.size() === 2 ? console.log(`\t${chalk.green('Test Result: Passed')}`) : console.log(`\t${chalk.red('Test Resuld: Failed')}`)
+  stack.size() === 2 ? 
+    console.log(`\t${chalk.green('Test Result: Passed')}`) : 
+    console.log(`\t${chalk.red('Test Resuld: Failed')}`)
 }
 
-function testIsEmpty(): void {
+/*
+  *
+  * Propósito: O método isEmpty retorna true caso a pilha esteja vazia
+  *   e false caso ela se encontre preenchida com um ou mais elementos
+  * 
+  * Descrição: A primeira função vai testar o método com uma pilha vazia
+  *   já na segunda a pilha será preenchida com dois elementos, logo o
+  *   método isEmpty deverá retornar false
+  * 
+*/
+function testIsEmpty_StackVazia(): void {
   const stack = new Stack<number>()
 
-  console.log(`\n${chalk.rgb(235, 179, 16)('Testanto a função isEmpty: ela returna true caso a pilha esteja vazia e false caso tenha ao menos um elemento')}`)
+  console.log(`${desc('Testando o método isEmpty, com a pilha vazia.')}`)
 
-  console.log(`\tResultado Esperado - true`)
-  console.log(`\tResultado recebido - ${stack.isEmpty()}`)
 
-  stack.isEmpty() === true ? console.log(`\t${chalk.green('Test Result: Passed')}`) : console.log(`\t${chalk.red('Test Resuld: Failed')}`)
+  stack.isEmpty() === true ? 
+    console.log(`\t${chalk.green('Test Result: Passed')}`) : 
+    console.log(`\t${chalk.red('Test Resuld: Failed')}`)
+}
+
+function testIsEmpty_StackCheia(): void {
+  const stack = new Stack<number>()
+
+  console.log(`${desc('Testando o método isEmpty, com a pilha preenchida.')}`)
+
+  stack.push(1)
+  stack.push(12)
+  stack.push(13)
+
+  stack.isEmpty() === false ? 
+    console.log(`\t${chalk.green('Test Result: Passed')}`) : 
+    console.log(`\t${chalk.red('Test Resuld: Failed')}`)
 }
 
 function testPop(): void {
