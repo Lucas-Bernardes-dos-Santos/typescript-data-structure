@@ -16,15 +16,31 @@ export default class Deque {
         this.items[this.count] = element;
         this.count++;
     }
-    peekBack() {
+    removeFront() {
         if (this.isEmpty())
             return undefined;
-        return this.items[this.count - 1];
+        let element_removed = this.items[this.first];
+        delete this.items[this.first];
+        this.first++;
+        return element_removed;
+    }
+    removeBack() {
+        if (this.isEmpty())
+            return undefined;
+        this.count--;
+        let element_removed = this.items[this.count];
+        delete this.items[this.count];
+        return element_removed;
     }
     peekFront() {
         if (this.isEmpty())
             return undefined;
         return this.items[this.first];
+    }
+    peekBack() {
+        if (this.isEmpty())
+            return undefined;
+        return this.items[this.count - 1];
     }
     size() {
         return this.count - this.first;

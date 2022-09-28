@@ -3,6 +3,10 @@ import Deque from "../data-structure/Deque.js";
 import { description } from "../util/test-util.js";
 testAddFront();
 testAddBack();
+testRemoveFront_DequeVazio();
+testRemoveFront_DequeCheio();
+testRemoveBack_DequeVazio();
+testRemoveBack_DequeCheio();
 testIsEmpty_DequeVazio();
 testIsEmpty_DequeCheio();
 testPeekBack_DequeVazio();
@@ -46,6 +50,60 @@ function testAddBack() {
     deque.addBack(10);
     deque.addBack(20);
     deque.size() === 2 && deque.peekBack() === 20 ?
+        console.log(`\t${chalk.green('Test Result: Passed')}`) :
+        console.log(`\t${chalk.red('Test Resuld: Failed')}`);
+}
+/*
+  *
+  * Propósito: O método removeFront() remove o primeiro elemento do deque
+  *   e retorna o elemento removido, caso não haja elementos undefined é
+  *   retornado.
+  *
+  * Descrição: Na primeira função será usado um deque vazio
+  *   e o valor de retorno deverá ser undefinedUm deque numérica.
+  *   Na segunda função será criado e prenchido com os valores
+  *   10 e 20 respectivamente, após usar o método removeFront()
+  *   o valor 10 deverá ser retornado.
+  *
+*/
+function testRemoveFront_DequeVazio() {
+    const deque = new Deque();
+    console.log(description(`Testando o método removeFront(), com o deque vazio`));
+    deque.removeFront() === undefined ?
+        console.log(`\t${chalk.green('Test Result: Passed')}`) :
+        console.log(`\t${chalk.red('Test Resuld: Failed')}`);
+}
+function testRemoveFront_DequeCheio() {
+    const deque = new Deque();
+    console.log(description(`Testando o método removeFront(), com o deque preenchido`));
+    deque.addBack(10);
+    deque.addBack(20);
+    deque.removeFront() === 10 ?
+        console.log(`\t${chalk.green('Test Result: Passed')}`) :
+        console.log(`\t${chalk.red('Test Resuld: Failed')}`);
+}
+/*
+  *
+  * Propósito: O método removeBack() remove o último elemento do deque
+  *   e retorna o elemento removido, caso não haja elementos undefined é
+  *   retornado.
+  *
+  * Descrição: Identico ao Remove Front
+  *
+*/
+function testRemoveBack_DequeVazio() {
+    const deque = new Deque();
+    console.log(description(`Testando o método removeBack(), com o deque vazio`));
+    deque.removeBack() === undefined ?
+        console.log(`\t${chalk.green('Test Result: Passed')}`) :
+        console.log(`\t${chalk.red('Test Resuld: Failed')}`);
+}
+function testRemoveBack_DequeCheio() {
+    const deque = new Deque();
+    console.log(description(`Testando o método removeBack(), com o deque preenchido`));
+    deque.addBack(10);
+    deque.addBack(20);
+    deque.removeBack() === 20 ?
         console.log(`\t${chalk.green('Test Result: Passed')}`) :
         console.log(`\t${chalk.red('Test Resuld: Failed')}`);
 }
