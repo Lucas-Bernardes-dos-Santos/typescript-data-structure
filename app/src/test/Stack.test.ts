@@ -20,7 +20,7 @@ testSize()
   * 
 */
 function testPush(): void {
-  console.log(`\n${desc('stack.push()')}`)
+  console.log(`\n${desc('Testando o método push()')}`)
 
   const stack = new Stack<number>()
   stack.push(4)
@@ -40,7 +40,7 @@ function testPush(): void {
 function testSize(): void {
 
   const stack = new Stack<number>()
-  console.log(`${desc('Testing the function size: It returns the size of the Stack')}`)
+  console.log(`${desc('Testando o método size()')}`)
   
   stack.push(4)
   stack.push(5)

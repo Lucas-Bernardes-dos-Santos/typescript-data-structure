@@ -16,7 +16,7 @@ testSize();
   *
 */
 function testPush() {
-    console.log(`\n${desc('stack.push()')}`);
+    console.log(`\n${desc('Testando o método push()')}`);
     const stack = new Stack();
     stack.push(4);
     stack.size() === 1 ?
@@ -32,7 +32,7 @@ function testPush() {
 */
 function testSize() {
     const stack = new Stack();
-    console.log(`${desc('Testing the function size: It returns the size of the Stack')}`);
+    console.log(`${desc('Testando o método size()')}`);
     stack.push(4);
     stack.push(5);
     stack.size() === 2 ? console.log(`\t${chalk.green('Test Result: Passed')}`) : console.log(`\t${chalk.red('Test Resuld: Failed')}`);
