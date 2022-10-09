@@ -29,7 +29,7 @@ function test_defaultEquals_Objetos_True() {
     let pessoa_A = { name: 'Lucas', age: 25 };
     let pessoa_B = { name: 'Lucas', age: 25 };
     console.log(description(`Testando a função defaultEquals: Enviando dois objetos iguais`));
-    defaultEquals(pessoa_A, pessoa_B) == true ?
+    defaultEquals(pessoa_A, pessoa_B) === true ?
         console.log(`\t${chalk.green('Test Result: Passed')}`) :
         console.log(`\t${chalk.red('Test Resuld: Failed')}`);
 }
