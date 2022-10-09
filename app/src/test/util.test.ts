@@ -33,7 +33,8 @@ function test_defaultEquals_Variaveis_False(): void {
 
 /*
   *
-  * Propósito: Testar a função defaultEqual enviando objetos para ela
+  * Propósito: A função defaultEquals compara duas variáveis ou objetos,
+  *   e retorn true caso elas sejam iguais e false caso não sejam
   * 
   * A primeira função testará se o retorno será verdadeiro
   *   e a segunda função testará o retorno false
