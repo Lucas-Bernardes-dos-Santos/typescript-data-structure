@@ -3,7 +3,9 @@ import { description, PASSED, FAILED } from "../util/test-util.js"
 
 test_push_ListaVazia()
 test_push_ListaCheia()
-
+test_removeAt_Head()
+test_removeAt_Meio()
+teste_removeAt_undefined()
 
 /*
   *
@@ -14,7 +16,7 @@ test_push_ListaCheia()
 function test_push_ListaVazia(): void {
   let list = new LinkedList<Number>()
 
-  console.log(description(`Testando a função push() com a lista vazia`))
+  console.log(description(`Testando o método push() com a lista vazia`))
 
   list.push(10)
 
@@ -26,13 +28,77 @@ function test_push_ListaVazia(): void {
 function test_push_ListaCheia(): void {
   let list = new LinkedList<Number>()
 
-  console.log(description(`Testando a função push() com a lista preenchida`))
+  console.log(description(`Testando o método push() com a lista preenchida`))
 
   list.push(10)
   list.push(20)
   list.push(30)
 
   list.size() === 3 ?
+    console.log(PASSED(`\tTeste Result: Passed`)) :
+    console.log(FAILED(`\tTeste Result: Failed`))
+}
+
+/*
+  *
+  * Propósito: O método removeAt remove um elemento
+  *   na posição passada como argumento, caso a posição
+  *   passada como argumento seja invalida o valor 
+  *   undefined será retornado do contrário o elemento
+  *   removido será retornado
+  * 
+  * Descrição: 
+  *   A primeira função vai testar remover o primeiro elemento da lista.
+  *   Na segunda função será testado a remoção de um elemento no meio da lista
+  *   Na terceira função será passado um valor invalido para retornar undefined
+  *      
+  * 
+*/
+function test_removeAt_Head(): void {
+  let list = new LinkedList<Number>()
+
+  console.log(description(`Testando o método removeAt removendo o primeiro elemento da lista`))
+
+  list.push(10)
+
+  let node = list.removeAt(0)!
+  
+  node.element === 10 ? 
+    console.log(PASSED(`\tTeste Result: Passed`)) :
+    console.log(FAILED(`\tTeste Result: Failed`))
+}
+
+function test_removeAt_Meio(): void {
+  let list = new LinkedList<Number>()
+
+  console.log(description(`Testando o método removeAt removendo um elemento no meio da lista`)) 
+
+  list.push(10)
+  list.push(20)
+  list.push(30)
+  list.push(40)
+
+  let node_1 = list.removeAt(1)!
+
+  let node_2 = list.removeAt(2)!
+
+  node_1.element === 20 && node_2.element === 40 ?
+    console.log(PASSED(`\tTeste Result: Passed`)) :
+    console.log(FAILED(`\tTeste Result: Failed`))
+}
+
+function teste_removeAt_undefined(): void {
+  let list = new LinkedList<Number>()
+
+  console.log(description(`Testando o método removeAt passando um index invalido`))
+  
+  list.push(10)
+  list.push(20)
+  list.push(30)
+
+  let node = list.getElementAt(15)
+
+  node?.element === undefined ?
     console.log(PASSED(`\tTeste Result: Passed`)) :
     console.log(FAILED(`\tTeste Result: Failed`))
 }
