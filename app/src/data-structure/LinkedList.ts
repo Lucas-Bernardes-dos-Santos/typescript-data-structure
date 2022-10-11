@@ -50,6 +50,11 @@ export default class LinkedList<T> {
     return false
   }
 
+  public remove(element: T): Node<T> | undefined {
+    let index = this.indexOf(element)
+    return this.removeAt(index)
+  }
+
   public removeAt(index: number): Node<T> | undefined {
     // Verificar se o index está dentro do intervalo
     if(this.checkIndex(index)) {
@@ -85,7 +90,7 @@ export default class LinkedList<T> {
     return this.head
   }
 
-  public indexOf(element: T): Number {
+  public indexOf(element: T): number {
     let current = this.head
 
     for(let index = 0; index < this.count && current != null; index++) {
@@ -97,7 +102,11 @@ export default class LinkedList<T> {
     return -1
   }
 
-  public size(): Number {
+  public size(): number {
     return this.count
+  }
+
+  public isEmpty(): boolean {
+    return this.size() === 0
   }
 }

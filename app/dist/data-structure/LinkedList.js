@@ -44,6 +44,10 @@ export default class LinkedList {
         }
         return false;
     }
+    remove(element) {
+        let index = this.indexOf(element);
+        return this.removeAt(index);
+    }
     removeAt(index) {
         // Verificar se o index está dentro do intervalo
         if (this.checkIndex(index)) {
@@ -85,5 +89,8 @@ export default class LinkedList {
     }
     size() {
         return this.count;
+    }
+    isEmpty() {
+        return this.size() === 0;
     }
 }
