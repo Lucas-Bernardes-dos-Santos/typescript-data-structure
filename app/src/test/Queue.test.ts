@@ -2,6 +2,8 @@ import chalk from "chalk"
 import Queue from "../data-structure/Queue.js"
 
 const desc = chalk.rgb(235,179,16)
+// FIXME: começar a usar as novas diretrizes para o uso da biblioteca chalk
+// FIXME: Melhorar os comentários sobre as funções teste e alterar seus nomes para seguir o padrão da classe DoublyLinkedList
 
 testEnqueue()
 testSize()

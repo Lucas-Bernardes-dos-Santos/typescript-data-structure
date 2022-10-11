@@ -2,6 +2,9 @@ import chalk from "chalk"
 import Deque from "../data-structure/Deque.js"
 import { extra, description } from "../util/test-util.js"
 
+// FIXME: começar a usar as novas diretrizes para o uso da biblioteca chalk
+// FIXME: Melhorar os comentários sobre as funções teste e alterar seus nomes para seguir o padrão da classe DoublyLinkedList 
+
 testAddFront()
 testAddBack()
 testRemoveFront_DequeVazio()

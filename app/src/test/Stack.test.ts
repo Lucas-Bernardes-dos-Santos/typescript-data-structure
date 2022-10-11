@@ -1,7 +1,9 @@
 import chalk from "chalk"
-
 import Stack from "../data-structure/Stack.js"
 
+// TODO: Terminar de testar todas as funções
+// FIXME: começar a usar as novas diretrizes para o uso da biblioteca chalk
+// FIXME: Melhorar os comentários sobre as funções teste e alterar seus nomes para seguir o padrão da classe DoublyLinkedList
 const desc = chalk.rgb(235,179,16)
 
 testPush()

@@ -1,5 +1,6 @@
 import LinkedList from "../data-structure/LinkedList.js";
 import { description, PASSED, FAILED } from "../util/test-util.js";
+// FIXME: Melhorar os comentários sobre as funções teste e alterar seus nomes para seguir o padrão da classe DoublyLinkedList
 test_push_ListaVazia();
 test_push_ListaCheia();
 test_removeAt_Head();

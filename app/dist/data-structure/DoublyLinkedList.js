@@ -12,6 +12,7 @@ export default class DoublyLinkedList {
         return index >= 0 && index <= this.count;
     }
     // Public METHODS
+    //TODO: Desenvolver o método push()
     insert(element, index) {
         if (this.checkIndex(index)) { // Verificando se o index passado é válido
             let node = new DoublyNode(element);
@@ -54,9 +55,12 @@ export default class DoublyLinkedList {
         }
         return undefined;
     }
+    //TODO: Desenvolver o método remove()
+    //TODO: Desenvolver o método isEmpty()
     size() {
         return this.count;
     }
+    //TODO: Desenvolver o método indexOf()
     getHead() {
         return this.head;
     }
