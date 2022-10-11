@@ -4,6 +4,8 @@ test_insert_A();
 test_insert_B();
 test_insert_C();
 test_insert_D();
+test_getElementAt_A();
+test_getElementAt_B();
 /*
   *
   * Função: O método insert adiciona um novo elemento
@@ -62,6 +64,40 @@ function test_insert_D() {
     list.insert(20, 1);
     let doublyNode = list.getElementAt(1);
     (doublyNode === null || doublyNode === void 0 ? void 0 : doublyNode.element) === 20 ?
+        console.log(PASSED(`\tTeste Result: Passed`)) :
+        console.log(FAILED(`\tTeste Result: Failed`));
+}
+/*
+  *
+  * Função: O método getElementAt retorná o DoublyNode
+  *   da  posição passada como parâmetro, caso o index
+  *   passado  seja  inválido undefined será retornado.
+  *
+  * Descrição:
+  *   1. A função A testará o método enviando um index
+  *     válido, o DoublyNode correto.
+  *   2. A função B testará o método enviando um index
+  *     inválido, retornando o valor undefined.
+  *
+*/
+function test_getElementAt_A() {
+    console.log(description(`Testando o método getElementAt(), passando um index válido:`));
+    let list = new DoublyLinkedList();
+    list.insert(10, 0);
+    list.insert(20, 1);
+    list.insert(30, 2);
+    let node = list.getElementAt(1);
+    (node === null || node === void 0 ? void 0 : node.element) === 20 ?
+        console.log(PASSED(`\tTeste Result: Passed`)) :
+        console.log(FAILED(`\tTeste Result: Failed`));
+}
+function test_getElementAt_B() {
+    console.log(description(`Testando o método getElementAt(), passando um index inválido:`));
+    let list = new DoublyLinkedList();
+    list.insert(10, 0);
+    list.insert(20, 1);
+    list.insert(30, 2);
+    list.getElementAt(10) === undefined ?
         console.log(PASSED(`\tTeste Result: Passed`)) :
         console.log(FAILED(`\tTeste Result: Failed`));
 }

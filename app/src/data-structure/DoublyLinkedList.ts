@@ -51,7 +51,6 @@ export default class DoublyLinkedList<T> {
   getElementAt(index: number): DoublyNode<T> | undefined {
     if(this.checkIndex(index)) {
       let node = this.head
-
       for(let i = 0; (i < index) && (node != null); i++) {
         node = node.next
       }
