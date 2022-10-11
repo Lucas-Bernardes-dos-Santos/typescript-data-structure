@@ -3,7 +3,7 @@ import Node from "./models/Node.js"
 
 export default class LinkedList<T> {
   private count: number
-  private head: Node<T> | undefined
+  protected head: Node<T> | undefined
 
   constructor(private equalsFn = defaultEquals<T>) {
     this.count = 0
@@ -12,10 +12,11 @@ export default class LinkedList<T> {
 
   // Private and Protected methods
   private checkIndex(index: number): boolean {
-    return index >= 0 && index < this.count
+    return index >= 0 && index <= this.count
   }
 
-  push(element: T): void {
+  // Public methods
+  public push(element: T): void {
     const node = new Node(element, undefined)
     if (this.head == null) 
       this.head = node
@@ -30,7 +31,26 @@ export default class LinkedList<T> {
     this.count++
   }
 
-  removeAt(index: number) {
+  public insert(element: T, index: number): boolean {
+    if(this.checkIndex(index)) {
+      let node = new Node(element)
+      if(index === 0) { // Inserir na primeira posição
+        let current = this.head
+        node.next = current
+        this.head = node
+      } else {
+        let previous = this.getElementAt(index - 1) // Pegando um elemento antes da posição que o novo elemento será inserido
+        let current = previous?.next // Elemento na posição que o novo elemento será inserido
+        previous!.next = node
+        node.next = current
+      }
+      this.count++
+      return true
+    }
+    return false
+  }
+
+  public removeAt(index: number): Node<T> | undefined {
     // Verificar se o index está dentro do intervalo
     if(this.checkIndex(index)) {
       let current = this.head
@@ -46,9 +66,10 @@ export default class LinkedList<T> {
       this.count--
       return current
     }
+    return undefined
   }
 
-  getElementAt(index: number): Node<T> | undefined {
+  public getElementAt(index: number): Node<T> | undefined {
     if(this.checkIndex(index)) {
       let node = this.head
 
@@ -60,7 +81,11 @@ export default class LinkedList<T> {
     return undefined
   }
 
-  size(): Number {
+  public getHead(): Node<T> | undefined {
+    return this.head
+  }
+
+  public size(): Number {
     return this.count
   }
 }

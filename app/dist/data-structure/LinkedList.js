@@ -8,8 +8,9 @@ export default class LinkedList {
     }
     // Private and Protected methods
     checkIndex(index) {
-        return index >= 0 && index < this.count;
+        return index >= 0 && index <= this.count;
     }
+    // Public methods
     push(element) {
         const node = new Node(element, undefined);
         if (this.head == null)
@@ -23,6 +24,25 @@ export default class LinkedList {
             current.next = node;
         }
         this.count++;
+    }
+    insert(element, index) {
+        if (this.checkIndex(index)) {
+            let node = new Node(element);
+            if (index === 0) { // Inserir na primeira posição
+                let current = this.head;
+                node.next = current;
+                this.head = node;
+            }
+            else {
+                let previous = this.getElementAt(index - 1); // Pegando um elemento antes da posição que o novo elemento será inserido
+                let current = previous === null || previous === void 0 ? void 0 : previous.next; // Elemento na posição que o novo elemento será inserido
+                previous.next = node;
+                node.next = current;
+            }
+            this.count++;
+            return true;
+        }
+        return false;
     }
     removeAt(index) {
         // Verificar se o index está dentro do intervalo
@@ -39,6 +59,7 @@ export default class LinkedList {
             this.count--;
             return current;
         }
+        return undefined;
     }
     getElementAt(index) {
         if (this.checkIndex(index)) {
@@ -49,6 +70,9 @@ export default class LinkedList {
             return node;
         }
         return undefined;
+    }
+    getHead() {
+        return this.head;
     }
     size() {
         return this.count;
