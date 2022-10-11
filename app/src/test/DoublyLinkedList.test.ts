@@ -128,4 +128,3 @@ function test_getElementAt_B(): void {
     console.log(PASSED(`\tTeste Result: Passed`)) :
     console.log(FAILED(`\tTeste Result: Failed`))   
 }
-
