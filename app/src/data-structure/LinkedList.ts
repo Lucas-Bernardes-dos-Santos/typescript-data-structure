@@ -109,4 +109,17 @@ export default class LinkedList<T> {
   public isEmpty(): boolean {
     return this.size() === 0
   }
+
+  public toString(): string {
+    if(this.head == null)
+      return ''
+    let objString = `${this.head.element}`
+    let current = this.head.next
+
+    for(let i = 1; i < this.size() && current != null; i++) {
+      objString = `${objString}, ${current?.element}`
+      current = current.next
+    }
+    return objString
+  }
 }

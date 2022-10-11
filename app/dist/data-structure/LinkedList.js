@@ -93,4 +93,15 @@ export default class LinkedList {
     isEmpty() {
         return this.size() === 0;
     }
+    toString() {
+        if (this.head == null)
+            return '';
+        let objString = `${this.head.element}`;
+        let current = this.head.next;
+        for (let i = 1; i < this.size() && current != null; i++) {
+            objString = `${objString}, ${current === null || current === void 0 ? void 0 : current.element}`;
+            current = current.next;
+        }
+        return objString;
+    }
 }

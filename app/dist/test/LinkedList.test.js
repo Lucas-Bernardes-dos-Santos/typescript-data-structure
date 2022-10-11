@@ -10,6 +10,8 @@ test_insert_Meio_Fim();
 test_inser_undefined();
 test_indexOf_A();
 test_indexOf_B();
+test_toString_A();
+test_toString_B();
 /*
   *
   * Propósito: A função push acrescenta um nove elemento
@@ -160,6 +162,39 @@ function test_indexOf_B() {
     list.push(20);
     list.push(30);
     list.indexOf(100) === -1 ?
+        console.log(PASSED(`\tTeste Result: Passed`)) :
+        console.log(FAILED(`\tTeste Result: Failed`));
+}
+/*
+  *
+  * Propósito: O método toString() retorna os valores da lista
+  *   como  uma  string. Caso  a lista esteja vazia uma string
+  *   vazia será retornada
+  *
+  * Descrição:
+  *   1. A primeira função vai testar o método toString em uma
+  *     lista preenchida com 3 elementos
+  *   2. Na  segunda  função vamos testar o método toString em
+  *     um lista vazia.
+*/
+function test_toString_A() {
+    let list = new LinkedList();
+    console.log(description(`Testando o método toString(), passando um lista preenchida`));
+    list.push(10);
+    list.push(20);
+    list.push(30);
+    let stringTest = '10, 20, 30';
+    let listString = list.toString();
+    stringTest === listString ?
+        console.log(PASSED(`\tTeste Result: Passed`)) :
+        console.log(FAILED(`\tTeste Result: Failed`));
+}
+function test_toString_B() {
+    let list = new LinkedList();
+    console.log(description(`Testando o método toString(), passando um lista vazia`));
+    let stringTest = '';
+    let listString = list.toString();
+    stringTest === listString ?
         console.log(PASSED(`\tTeste Result: Passed`)) :
         console.log(FAILED(`\tTeste Result: Failed`));
 }
