@@ -74,6 +74,15 @@ export default class LinkedList {
     getHead() {
         return this.head;
     }
+    indexOf(element) {
+        let current = this.head;
+        for (let index = 0; index < this.count && current != null; index++) {
+            if (this.equalsFn(element, current.element))
+                return index;
+            current = current === null || current === void 0 ? void 0 : current.next;
+        }
+        return -1;
+    }
     size() {
         return this.count;
     }

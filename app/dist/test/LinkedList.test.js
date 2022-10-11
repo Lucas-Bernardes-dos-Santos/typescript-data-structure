@@ -8,6 +8,8 @@ test_removeAt_undefined();
 test_insert_Head();
 test_insert_Meio_Fim();
 test_inser_undefined();
+test_indexOf_A();
+test_indexOf_B();
 /*
   *
   * Propósito: A função push acrescenta um nove elemento
@@ -126,6 +128,38 @@ function test_inser_undefined() {
     console.log(description(`Testando o método insert(), inserindo um elemento em uma posição inválida`));
     list.push(10);
     list.insert(20, 15) === false ?
+        console.log(PASSED(`\tTeste Result: Passed`)) :
+        console.log(FAILED(`\tTeste Result: Failed`));
+}
+/*
+  *
+  * Propósito: O método indexOf retorna a posição do elemeto passado
+  *   como parâmetro. Caso o elemento não exista será retornado -1
+  *
+  * Descrição:
+  *   1. Na primeira função testaremos o indexOf com um valor que
+  *   exista na lista
+  *   2. Na segunda função testaremos o indexOf passando um valor
+  *   que não tenha na lista, logo o método retornará -1
+  *
+*/
+function test_indexOf_A() {
+    let list = new LinkedList();
+    console.log(description(`Testando o método indexOf(), passando um valor que tenha na lista`));
+    list.push(10);
+    list.push(20);
+    list.push(30);
+    list.indexOf(20) === 1 ?
+        console.log(PASSED(`\tTeste Result: Passed`)) :
+        console.log(FAILED(`\tTeste Result: Failed`));
+}
+function test_indexOf_B() {
+    let list = new LinkedList();
+    console.log(description(`Testando o método indexOf(), passando um valor que não tenha na lista`));
+    list.push(10);
+    list.push(20);
+    list.push(30);
+    list.indexOf(100) === -1 ?
         console.log(PASSED(`\tTeste Result: Passed`)) :
         console.log(FAILED(`\tTeste Result: Failed`));
 }

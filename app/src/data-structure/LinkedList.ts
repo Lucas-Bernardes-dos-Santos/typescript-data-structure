@@ -85,6 +85,18 @@ export default class LinkedList<T> {
     return this.head
   }
 
+  public indexOf(element: T): Number {
+    let current = this.head
+
+    for(let index = 0; index < this.count && current != null; index++) {
+      if(this.equalsFn(element, current.element)) 
+        return index;
+      current = current?.next
+    }
+
+    return -1
+  }
+
   public size(): Number {
     return this.count
   }
