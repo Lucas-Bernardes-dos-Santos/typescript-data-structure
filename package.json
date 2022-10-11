@@ -9,6 +9,7 @@
     "test-queue": "node app/dist/test/Queue.test.js",
     "test-deque": "node app/dist/test/Deque.test.js",
     "test-linkedList": "node app/dist/test/LinkedList.test.js",
+    "test-doublyLinkedList": "node app/dist/test/DoublyLinkedList.test.js",
     "test-util": "node app/dist/test/util.test.js"
   },
   "keywords": [],
