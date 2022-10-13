@@ -12,7 +12,19 @@ export default class DoublyLinkedList {
         return index >= 0 && index <= this.count;
     }
     // Public METHODS
-    //TODO: Desenvolver o método push()
+    push(element) {
+        let node = new DoublyNode(element);
+        if (this.head === undefined) { // Caso a lista esteja vazia
+            this.head = node;
+            this.tail = node;
+        }
+        else {
+            node.previous = this.tail;
+            this.tail.next = node;
+            this.tail = node;
+        }
+        this.count++;
+    }
     insert(element, index) {
         if (this.checkIndex(index)) { // Verificando se o index passado é válido
             let node = new DoublyNode(element);
@@ -55,16 +67,67 @@ export default class DoublyLinkedList {
         }
         return undefined;
     }
-    //TODO: Desenvolver o método remove()
-    //TODO: Desenvolver o método isEmpty()
+    remove(element) {
+        let index = this.indexOf(element);
+        return this.removeAt(index);
+    }
+    removeAt(index) {
+        if (this.checkIndex(index)) {
+            let current = this.head;
+            if (index === 0) { // Remover o Primeiro elemento
+                this.head = current === null || current === void 0 ? void 0 : current.next;
+                if (this.count === 1) {
+                    this.tail = undefined;
+                }
+                else {
+                    this.head.previous = undefined;
+                }
+            }
+            else if (index === this.count - 1) { // Remover o último elemento
+                current = this.tail;
+                this.tail = current.previous;
+                this.tail.next = undefined;
+            }
+            else { // Remover um elemento no meio da lista
+                current = this.getElementAt(index);
+                let previous = current.previous; // Faz a ligação com o next de current
+                previous.next = current.next;
+            }
+            this.count--;
+            return current;
+        }
+        return undefined;
+    }
+    isEmpty() {
+        return this.size() === 0;
+    }
     size() {
         return this.count;
     }
-    //TODO: Desenvolver o método indexOf()
+    indexOf(element) {
+        let current = this.head;
+        for (let index = 0; index < this.count && current != null; index++) {
+            if (this.equalsFn(element, current.element))
+                return index;
+            current = current === null || current === void 0 ? void 0 : current.next;
+        }
+        return -1;
+    }
     getHead() {
         return this.head;
     }
     getTail() {
         return this.tail;
+    }
+    toString() {
+        if (this.head == null)
+            return '';
+        let objString = `${this.head.element}`;
+        let current = this.head.next;
+        for (let i = 1; i < this.size() && current != null; i++) {
+            objString = `${objString}, ${current === null || current === void 0 ? void 0 : current.element}`;
+            current = current.next;
+        }
+        return objString;
     }
 }

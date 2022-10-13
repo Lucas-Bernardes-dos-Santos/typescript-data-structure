@@ -9,6 +9,20 @@ test_insert_D()
 test_getElementAt_A()
 test_getElementAt_B()
 
+test_removeAt_A()
+test_removeAt_B()
+test_removeAt_C()
+test_removeAt_D()
+
+test_push_A()
+test_push_B()
+
+test_indexOf_A()
+test_indexOf_B()
+
+test_toString_A()
+test_toString_B ()
+
 /*
   *
   * Função: O método insert adiciona um novo elemento
@@ -114,7 +128,6 @@ function test_getElementAt_A(): void {
     console.log(PASSED(`\tTeste Result: Passed`)) :
     console.log(FAILED(`\tTeste Result: Failed`))   
 }
-
 function test_getElementAt_B(): void {
   console.log(description(`Testando o método getElementAt(), passando um index inválido:`))
 
@@ -125,6 +138,206 @@ function test_getElementAt_B(): void {
   list.insert(30, 2)
 
   list.getElementAt(10) === undefined ?
+    console.log(PASSED(`\tTeste Result: Passed`)) :
+    console.log(FAILED(`\tTeste Result: Failed`))   
+}
+
+/*
+  *
+  * Função: O método removeAt remove um elemento
+  *   de  uma  posição passada como parâmetro, o
+  *   método então retornará o elemento removido
+  *   da  lista, porém caso o index passado seja
+  *   invalido  o valor undefined será retornado.
+  * 
+  * Descrição:
+  *   1. A função A testará o método removendo o
+  *     primeiro  elemento de uma lista que tem
+  *     apenas um elemento.
+  *   2. A função B testará a remoção do primeiro
+  *     elemento  em  uma  lista  com  mais de um 
+  *     elemento nela.
+  *   3. A função C testará remoção de um elemento
+  *     no meio da lista.
+  *   4. A  função  D  testará a remoção do último
+  *     elemento da lista
+*/
+function test_removeAt_A(): void {
+  console.log(description(`Testando o método removeAt(), removendo o primeiro elemento de uma lista com apenas um elemento:`))
+
+  let list = new DoublyLinkedList<number>()
+  list.insert(10, 0)
+  let elementRemoved = list.removeAt(0)
+
+  elementRemoved!.element === 10 && list.getTail() === undefined ?
+    console.log(PASSED(`\tTeste Result: Passed`)) :
+    console.log(FAILED(`\tTeste Result: Failed`))   
+}
+function test_removeAt_B(): void {
+  console.log(description(`Testando o método removeAt(), removendo o primeiro elemento de uma lista com mais de um elementos:`))
+
+  let list = new DoublyLinkedList<number>()
+  list.insert(10, 0)
+  list.insert(20, 1)
+  list.insert(30, 2)
+
+  let elementRemoved = list.removeAt(0)
+
+  elementRemoved!.element === 10 && list.getHead()!.previous === undefined ?
+    console.log(PASSED(`\tTeste Result: Passed`)) :
+    console.log(FAILED(`\tTeste Result: Failed`))  
+}
+function test_removeAt_C(): void {
+  console.log(description(`Testando o método removeAt(), removendo o primeiro elemento do meio de uma :`))
+
+  let list = new DoublyLinkedList<number>()
+
+  list.insert(10, 0)
+  list.insert(20, 1)
+  list.insert(30, 2)
+  list.insert(40, 3)
+
+  let elementRemoved = list.removeAt(2)
+
+  elementRemoved!.element === 30 && list.size() === 3 ?
+    console.log(PASSED(`\tTeste Result: Passed`)) :
+    console.log(FAILED(`\tTeste Result: Failed`))  
+}
+function test_removeAt_D(): void {
+  console.log(description(`Testando o método removeAt(), removendo o último elemento da lista:`))
+
+  let list = new DoublyLinkedList<number>()
+
+  list.insert(10, 0)
+  list.insert(20, 1)
+  list.insert(30, 2)
+  list.insert(40, 3)
+
+  let elementRemoved = list.removeAt(3)
+
+  elementRemoved!.element === 40 && list.getTail()!.element === 30 ?
+    console.log(PASSED(`\tTeste Result: Passed`)) :
+    console.log(FAILED(`\tTeste Result: Failed`))  
+}
+
+/*
+  *
+  * Função: O método push() adiciona um novo elemento
+  *   na última posição da lista. 
+  * 
+  * Descrição:
+  *   1. A função A vai testar o método inserindo um
+  *     novo elemento em uma lista vazia.
+  *   2. A função B vai testar o método inserindo um
+  *     novo elemento um uma lista já preenchida.
+  *   
+*/
+function test_push_A(): void {
+  console.log(description(`Testando o método push(), adicionando um novo elemento em uma lista vazia:`))
+
+  let list = new DoublyLinkedList<number>()
+
+  list.push(10)
+
+  list.getHead()!.element === 10 && 
+  list.getTail()!.element === 10 &&
+  list.size() === 1 ?
+    console.log(PASSED(`\tTeste Result: Passed`)) :
+    console.log(FAILED(`\tTeste Result: Failed`))     
+}
+function test_push_B(): void {
+  console.log(description(`Testando o método push(), adicionando um novo elemento em uma lista que já foi preenchida:`))
+
+  let list = new DoublyLinkedList<number>()
+
+  list.push(10)
+  list.push(20)
+  list.push(30)
+
+  list.getHead()!.element === 10 && 
+  list.getTail()!.element === 30 &&
+  list.size() === 3 ?
+    console.log(PASSED(`\tTeste Result: Passed`)) :
+    console.log(FAILED(`\tTeste Result: Failed`))     
+}
+
+/*
+  *
+  * Função: O método indexOf retorna a posição
+  *   de  um  elemento  passado como parâmetro. 
+  *   Caso  o  elemento  não  exista o valor -1 
+  *   será retornado.
+  * 
+  * Descrição:
+  *   1. A função A será testado o método sendo
+  *     passado um valor que esteja na lista.
+  *   2. A  função  B será testaremos passar um
+  *     elemento  que  não  haja na função para
+  *     testarmos o retorno -1.
+  * 
+*/
+function test_indexOf_A(): void {
+  console.log(description(`Testando o método indexOf(), passando um elemento existente:`))
+
+  let list = new DoublyLinkedList<number>()
+
+  list.push(10)
+  list.push(20)
+  list.push(30)
+  list.push(40)
+
+  list.indexOf(30) === 2 ?
+    console.log(PASSED(`\tTeste Result: Passed`)) :
+    console.log(FAILED(`\tTeste Result: Failed`))   
+}
+function test_indexOf_B(): void {
+  console.log(description(`Testando o método indexOf(), passando um elemento inexistente:`))
+
+  let list = new DoublyLinkedList<number>()
+
+  list.push(10)
+  list.push(20)
+  list.push(30)
+  list.push(40)
+
+  list.indexOf(210) === -1 ?
+    console.log(PASSED(`\tTeste Result: Passed`)) :
+    console.log(FAILED(`\tTeste Result: Failed`))   
+}
+
+/*
+  *
+  * Função: O método toString() retorna uma string
+  *   mostrando todos os elentos contidos na lista.
+  *   Caso  a  lista estaja vazia uma string vazia 
+  *   será retornada.
+  * 
+  * Descrição: 
+  *   1. A  função  A vai testar o uso do método em
+  *     uma lista vazia.
+  *   2. A função B vai testar o método toString em
+  *     uma lista preenchida
+  * 
+*/
+function test_toString_A(): void {
+  console.log(description(`Testando o método toString(), em uma lista vazia:`))
+
+  let list = new DoublyLinkedList<number>()
+
+  list.toString() === '' ?
+    console.log(PASSED(`\tTeste Result: Passed`)) :
+    console.log(FAILED(`\tTeste Result: Failed`))   
+}
+function test_toString_B(): void {
+  console.log(description(`Testando o método toString(), em uma lista preenchida:`))
+
+  let list = new DoublyLinkedList<number>()
+
+  list.push(10)
+  list.push(20)
+  list.push(30)
+
+  list.toString() === '10, 20, 30' ?
     console.log(PASSED(`\tTeste Result: Passed`)) :
     console.log(FAILED(`\tTeste Result: Failed`))   
 }

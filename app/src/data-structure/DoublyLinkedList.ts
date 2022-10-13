@@ -18,7 +18,18 @@ export default class DoublyLinkedList<T> {
   }
 
   // Public METHODS
-  //TODO: Desenvolver o método push()
+  push(element: T): void {
+    let node = new DoublyNode(element)
+    if(this.head === undefined) { // Caso a lista esteja vazia
+      this.head = node
+      this.tail = node
+    } else {
+        node.previous = this.tail
+        this.tail!.next = node
+        this.tail = node
+    }
+    this.count++
+  }
 
   insert(element: T, index: number): boolean {
     if(this.checkIndex(index)) { // Verificando se o index passado é válido
@@ -61,23 +72,73 @@ export default class DoublyLinkedList<T> {
     return undefined
   }
 
-  //TODO: Desenvolver o método remove()
+  remove(element: T): DoublyNode<T> | undefined {
+    let index = this.indexOf(element)
+    return this.removeAt(index)
+  }
 
-  //TODO: Desenvolver o método isEmpty()
+  removeAt(index: number): DoublyNode<T> | undefined {
+    if(this.checkIndex(index)) {
+      let current = this.head
+      if(index === 0) { // Remover o Primeiro elemento
+        this.head = current?.next
+        if(this.count === 1) {
+          this.tail = undefined
+        } else {
+          this.head!.previous = undefined
+        }
+      } else if(index === this.count - 1) { // Remover o último elemento
+        current = this.tail
+        this.tail = current!.previous
+        this.tail!.next = undefined
+      } else { // Remover um elemento no meio da lista
+        current = this.getElementAt(index)
+        let previous =  current!.previous // Faz a ligação com o next de current
+        previous!.next = current!.next
+      }
+      this.count--
+      return current
+    }
+    return undefined
+  }
+
+  isEmpty(): boolean {
+    return this.size() === 0
+  }
 
   size(): number {
     return this.count
   }
 
-  //TODO: Desenvolver o método indexOf()
+  indexOf(element: T): number {
+    let current = this.head
+
+    for(let index = 0; index < this.count && current != null; index++) {
+      if(this.equalsFn(element, current.element)) 
+        return index;
+      current = current?.next
+    }
+
+    return -1
+  }
 
   getHead(): DoublyNode<T> | undefined {
     return this.head
   }
-
   getTail(): DoublyNode<T> | undefined {
     return this.tail
   }
 
-  //TODO: Desenvolver o método toString()
+  toString(): string {
+    if(this.head == null)
+      return ''
+    let objString = `${this.head.element}`
+    let current = this.head.next
+
+    for(let i = 1; i < this.size() && current != null; i++) {
+      objString = `${objString}, ${current?.element}`
+      current = current.next
+    }
+    return objString
+  }
 }
