@@ -11,6 +11,7 @@
     "test-linkedList": "node app/dist/test/LinkedList.test.js",
     "test-doublyLinkedList": "node app/dist/test/DoublyLinkedList.test.js",
     "test-set": "node app/dist/test/Set.test.js",
+    "test-dictionary": "node app/dist/test/Dictionary.js",
     "test-util": "node app/dist/test/util.test.js"
   },
   "keywords": [],
