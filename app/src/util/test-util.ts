@@ -6,6 +6,5 @@ const PASSED = chalk.rgb(32, 245, 9)
 const FAILED = chalk.rgb(250, 11, 0)
 const extra = chalk.blue
 
-export {description}
 export {extra}
-export {PASSED, FAILED}
+export {description, PASSED, FAILED}

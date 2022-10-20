@@ -1,12 +1,15 @@
 import chalk from "chalk"
-import { defaultEquals } from "../util/util.js"
+import { Persons } from "./models/Person.js"
+import { defaultEquals, defaultToString } from "../util/util.js"
 import { description } from "../util/test-util.js"
 
 test_defaultEquals_Variaveis_True()
 test_defaultEquals_Variaveis_False()
 test_defaultEquals_Objetos_True()
 test_defaultEquals_Objetos_False()
+test_defaultToString_A()
 
+// TODO: Melhorar a descrição dos testes da função defaultEquals
 /*
   *
   * Propósito: Comprar a função defaultEqual enviando variaveis para ela
@@ -63,6 +66,16 @@ function test_defaultEquals_Objetos_False(): void {
   let pessoa_B = {name: 'Lucas', age: 10}
 
   defaultEquals<Person>(pessoa_A, pessoa_B) === false ?
+    console.log(`\t${chalk.green('Test Result: Passed')}`) : 
+    console.log(`\t${chalk.red('Test Resuld: Failed')}`) 
+}
+
+function test_defaultToString_A(): void {
+  console.log(description(`Testando a função defaultToString():`))
+
+  let person_A = new Persons('Lucas Bernardes', 26)
+
+  defaultToString(person_A) === 'Lucas Bernardes - 26' ?
     console.log(`\t${chalk.green('Test Result: Passed')}`) : 
     console.log(`\t${chalk.red('Test Resuld: Failed')}`) 
 }

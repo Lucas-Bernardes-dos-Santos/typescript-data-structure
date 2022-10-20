@@ -9,4 +9,6 @@ export default class Dictionary<K, V> {
   constructor(private toStrFn: (Key: K) => string = defaultToString) {
     this.table = {}
   }
+
+  
 }
